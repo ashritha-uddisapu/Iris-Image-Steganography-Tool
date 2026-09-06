@@ -13,12 +13,13 @@ def encode(image,message):
     iris_sign = ''.join(format(ord(char),'08b') for char in sign) #32-bits but in 8-bit, like IRIS = 4 char * 8 bits = 32 bits in total
     payload_length_bits = format(payload_length,'032b') #convert length from decimal to 32-bit format n store it (for higher numbers if the length of the payload is more); also the decoder knows where the length field ends, exactly 32 bits cause length is represented in 32-bit format
     encoded_bits = iris_sign + payload_length_bits + converted #variable total, holds everything together
-    image_capacity=image.height*image.width*3
+    image_capacity = image.height * image.width * 3
 
     if image_capacity<len(encoded_bits):
         return "Message is too large for this image"
     
     else:
+        
         secret_index=0
         for y in range(image.height):
             for x in range(image.width): #iterate through pixels

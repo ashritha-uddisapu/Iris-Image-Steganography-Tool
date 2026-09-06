@@ -1,4 +1,5 @@
 from PIL import Image
+
 image=Image.open("outputs/test1.png")
 print(image.size)
 print(image.mode)

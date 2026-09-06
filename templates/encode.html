@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encoder</title>
+    <link rel="stylesheet" href="../static/encode.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Encoder</h1>
+            <p>Encode the messages safely using RGB LSB Steganography</p>
+        </header>
+        <section>
+            <label class="image-upload-card">
+                <h1>🖼️</h1>
+                <h2>Upload your image here</h2>
+                <p>for encoding using steganography </p>
+                <input type="file" id="image" accept="image/*">
+                <p id="file_name"></p>
+            </label>
+            <textarea id="message" placeholder="Enter the secret message "></textarea>
+            <button id="btn1">Encode</button>
+        </section>
+    </main>
+<script src="../static/script.js"></script>
+</body>
+</html>

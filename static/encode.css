@@ -1,0 +1,76 @@
+body{
+    background-color: #0F1020 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0px;
+}
+
+.image-upload-card{
+    height: 300px;
+    width: 980px;
+    background-color: #211A35;
+    border: 2px solid #6C63A8;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #F4F1FF ;
+    margin: 0px;
+    gap: 30px;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+    text-align: center;
+    color: #F4F1FF;
+    margin-top: 0px;
+}
+
+p{
+    font-size: 25px;
+}
+
+h1{
+    font-size: 35px;
+}
+
+#message{
+    height: 50px;
+    width: 980px;
+    border: 2px solid #6C63A8;
+    border-radius: 5px;
+    background-color: #B8A9E8;
+    resize: vertical;
+    min-height: 50px;
+}
+
+#btn1{
+    height: 35px;
+    width: 100px;
+    background-color: #8B7FD1;
+    border-radius: 5px;
+}
+
+.image-upload-card>h1, .image-upload-card>h2, .image-upload-card>p {
+    margin: 0px;
+}
+
+#image {
+    display: none;
+}
+
+#file_name{
+    font-size: 20px;
+}

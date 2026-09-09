@@ -1,10 +1,5 @@
 from PIL import Image
 
-image_path = input("Enter the image path: ")
-image = Image.open(image_path)
-
-message = input("Enter the messsage to be encoded: ")
-
 def encode(image,message):
     converted=''.join(format(ord(char),'08b')for char in message) #8-bits storage per character; 8-bit representation of a character; binary representation
     payload_length=len(converted) #normal int
@@ -26,7 +21,7 @@ def encode(image,message):
                 pixel=image.getpixel((x,y))
                 pixel=list(pixel) #converting tuple to list for modification
 
-                for i in range(3): #iterate through the rgb channel (1+1+1, so rnage(3))
+                for i in range(3): #iterate through the rgb channel (1+1+1, so range(3))
                     if secret_index<len(encoded_bits):
                         secret_bit=int(encoded_bits[secret_index])
                         if (pixel[i] & 1)!=secret_bit:
@@ -44,12 +39,22 @@ def encode(image,message):
     return image
 
 
-encoded_image=encode(image,message)
+if __name__ == "__main__":
 
-if isinstance(encoded_image, Image.Image):
-    encoded_image.save("outputs/test1.png")
-else:
-    print(encoded_image)
+    image_path = input("Enter the image path: ")
+    image = Image.open(image_path)
+
+    message = input("Enter the messsage to be encoded: ")
+
+    encoded_image=encode(image,message)
+
+    if isinstance(encoded_image, Image.Image):
+        encoded_image.save("outputs/test1.png")
+    else:
+        print(encoded_image)
+
+
+
 
 
 #payload header and metadata

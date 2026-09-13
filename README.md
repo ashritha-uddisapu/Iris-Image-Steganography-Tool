@@ -1,4 +1,4 @@
-# IRIS 🌙
+# IRIS
 
 IRIS is a web-based image steganography application that allows users to hide secret messages inside images and retrieve them later.
 

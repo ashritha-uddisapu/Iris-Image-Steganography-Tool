@@ -1,9 +1,5 @@
 from PIL import Image
 
-image=Image.open("outputs/test1.png")
-print(image.size)
-print(image.mode)
-
 def decode(image):
 
     sign_bits = ""
@@ -12,7 +8,10 @@ def decode(image):
     length_bits = ""
     secret_index = 0
     payload_binary = ""
-    payload = ""
+    # payload = ""
+    payload = []
+    finished = False
+
 
     for y in range(image.height):
         for x in range(image.width):
@@ -42,9 +41,19 @@ def decode(image):
 
                 secret_index = secret_index+1
 
+            if secret_index>=64 and secret_index>end_limit:
+                finished = True
+                break
+
+        if finished:
+            break
+
     for i in range(0,payload_length,8):
-        payload += chr(int(payload_binary[i:i+8],2))
+        # payload += chr(int(payload_binary[i:i+8],2))
+        payload.append(int(payload_binary[i:i+8],2))
+
+    payload = bytes(payload)
+    payload = payload.decode("utf-8")
+    print(payload)
 
     return payload
-
-print(decode(image))

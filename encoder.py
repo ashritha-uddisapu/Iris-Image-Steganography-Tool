@@ -1,7 +1,9 @@
 from PIL import Image
 
 def encode(image,message):
-    converted=''.join(format(ord(char),'08b')for char in message) #8-bits storage per character; 8-bit representation of a character; binary representation
+    encoded_message = message.encode("utf-8")
+    converted = ''.join(format(byte,'08b') for byte in encoded_message)
+    # converted=''.join(format(ord(char),'08b')for char in message) #8-bits storage per character; 8-bit representation of a character; binary representation
     payload_length=len(converted) #normal int
 
     sign = "IRIS"

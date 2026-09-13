@@ -7,26 +7,37 @@
     <link rel="stylesheet" href="../static/encode.css">
 </head>
 <body>
-    <main>
+    <main id="ui_body">
         <header>
             <h1>Encoder</h1>
             <p>Encode the messages safely using RGB LSB Steganography</p>
         </header>
         <section>
-            <label class="image-upload-card">
-                <h1>🖼️</h1>
-                <h2>Upload your image here</h2>
-                <p>for encoding using steganography </p>
-                <input type="file" id="image" accept="image/*">
-                <p id="file_name"></p>
-            </label>
-            <textarea id="message" placeholder="Enter the secret message "></textarea>
-            <button id="btn1">Encode</button>
-            <img id="encoded_image" src="">
-            <button id="download_button" hidden
-            >Download</button> <br><br>
+            <div id="encoder-panel">
+                <label class="image-upload-card">
+                    <h1>🖼️</h1>
+                    <h2>Upload your image here</h2>
+                    <p>for encoding using steganography </p>
+                    <input type="file" id="image" accept="image/*">
+                    <p id="file_name"></p>
+                </label>
+                <textarea id="message" placeholder="Enter the secret message "></textarea>
+                <button id="btn1">Encode</button>
+            </div>
+            
+            <div id="output-panel">
+                <div id="output-card">
+                    <p id="output_message">Your encoded image will appear here!</p>
+                    <img id="encoded_image" src="">
+                </div>
+                    <button id="download_button">Download</button> <br><br>
+            </div>
+
+            
         </section>
     </main>
+    <div id="star-container"></div>
+    <span class="star">✦</span>
 <script src="../static/script.js"></script>
 </body>
 </html>

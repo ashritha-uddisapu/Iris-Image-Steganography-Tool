@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Decoder</title>
+    <link rel="stylesheet" href="../static/decode.css">
 </head>
 <body>
-    <h1>Decoder</h1>
+    <main id="ui_body">
+        <header>
+            <h1>Decoder</h1>
+            <p>Decode the messages safely using RGB LSB Steganography</p>
+        </header>
+        <section>
+            <label class="image-upload-card">
+                <h1>🖼️</h1>
+                <h2>Upload your image here</h2>
+                <p>for decoding using steganography </p>
+                <input type="file" id="image" accept="image/*">
+                <p id="file_name"></p>
+            </label>
+            <button id="btn1">Decode</button>
+            <div id="message_card">
+                <p id="decoded_message" >No message decoded yet!</p>
+                    <span id="copy_icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <rect x="4" y="4" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </span>
+            </div>
+        </section>
+    </main>
+    <div id="star-container"></div>
+    <span class="star">✦</span>
+    <script src="../static/script_decode.js"></script>
 </body>
 </html>

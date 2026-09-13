@@ -1,7 +1,5 @@
 const image_input = document.getElementById("image")
 const file_name = document.getElementById("file_name")
-const secret_message = document.getElementById("message")
-const output_message = document.getElementById("output_message")
 
 function store_image(){
     console.log(image_input.files)
@@ -11,36 +9,18 @@ function store_image(){
 
 image_input.addEventListener("change",store_image)
 
-secret_message.addEventListener("keydown",function(event){
-    if (event.key === "Enter" && !event.shiftKey)
-    {
-        event.preventDefault()
-        send_input()
-    }
-})
+const decode_button = document.getElementById("btn1")
 
-
-const encode_button = document.getElementById("btn1")
+const decoded_message = document.getElementById("decoded_message")
 
 function send_input(){
-    if (image_input.files.length == 0 && secret_message.value == "")
-    {
-        output_message.textContent = "Please enter the image and message to encode!"
-        return
-    }
-    if (image_input.files.length == 0){
-        output_message.textContent = "No image uploaded!"
-        return
-    }
-    if (secret_message.value == "")
-    {
-        output_message.textContent = "No message entered!"
+    if (image_input.files.length == 0) {
+        decoded_message.textContent = "No Image Uploaded!"
         return
     }
     const get_form_data = new FormData()
     get_form_data.append("image",image_input.files[0])
-    get_form_data.append("message",secret_message.value)
-    fetch("/encode", {
+    fetch("/decode", {
         method: "POST",
         body: get_form_data
     })
@@ -48,35 +28,33 @@ function send_input(){
         return response.json()
     })
     .then(data => {
-        const encoded_image = document.getElementById("encoded_image")
-        // console.log(data)
-        if(data.error)
-        {
-            output_message.textContent = "Message is too large for this image!"
-            encoded_image.src = ""
-            return
-        }
-        output_message.textContent = "✨ Encoded your image succesfully ✨"
-        const image_url = "/outputs/" + data.filename
-        // console.log(image_url)
-        
-        encoded_image.src = image_url
-        document.getElementById("output-card").classList.add("encoded")
-        const download_button = document.getElementById("download_button")
-        // download_button.hidden = false
-        download_button.addEventListener("click",activate_download)
-        function activate_download(){
-            const download_link = document.createElement("a")
-            download_link.href = image_url
-            download_link.download = data.filename
-            download_link.click()
-        }
+        console.log(data)
+        decoded_message.textContent = data.message
+        console.log(data.message)
+        const message_card = document.getElementById("message_card")
     })
 } 
 
-encode_button.addEventListener("click",send_input)
+decode_button.addEventListener("click",send_input)
 
-
+const copy_icon = document.getElementById("copy_icon")
+copy_icon.addEventListener("click",copy)
+function copy() {
+    if(!(decoded_message.textContent == "No message decoded yet!") && !(decoded_message.textContent == "No Image Uploaded!"))
+    {
+        console.log("Copy Clicked!")
+        navigator.clipboard.writeText(decoded_message.textContent)
+        const svg = copy_icon.querySelector("svg")
+        console.log(svg.innerHTML)
+        svg.innerHTML = `<path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none"/>`
+        setTimeout(function(){
+            svg.innerHTML = 
+            `<rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"></rect>
+            <rect x="4" y="4" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"></rect>`
+        },1500)
+        
+    }
+}
 
 const star_container = document.getElementById("star-container")
 

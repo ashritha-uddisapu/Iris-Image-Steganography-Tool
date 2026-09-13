@@ -5,6 +5,7 @@ from decoder import decode
 import os
 
 app = Flask(__name__)
+os.makedirs("outputs", exist_ok=True)
 
 @app.route("/")
 def home():

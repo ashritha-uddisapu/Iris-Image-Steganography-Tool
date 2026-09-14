@@ -26,7 +26,7 @@ def decode(image):
                             sign += chr(int(sign_bits[i:i+8],2))
 
                         if sign != "IRIS":
-                            return "IRIS Sign not found! "
+                            return "IRIS Sign not found! Please encode your image using IRIS encoder to decode the image!"
 
                 if secret_index>=32 and secret_index<64:
                     if sign == "IRIS":

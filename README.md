@@ -45,9 +45,9 @@ IRIS converts the secret message into its **UTF-8 byte representation** and then
 
 The generated bitstream contains three parts:
 
-1. **IRIS Signature** — 32 bits
-2. **Payload Length** — 32 bits
-3. **Message Payload** — variable number of bits
+1. **IRIS Signature** - 32 bits
+2. **Payload Length** - 32 bits
+3. **Message Payload** - variable number of bits
 
 These bits are embedded into the **least significant bits of the RGB channels** of the image.
 
